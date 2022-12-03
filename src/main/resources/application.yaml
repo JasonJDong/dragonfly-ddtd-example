@@ -1,0 +1,35 @@
+dragonfly-ddtd:
+  # you should use your zookeeper addrs.
+  zookeeper-addr: some.ip1.zk.net:2181,some.ip2.zk.net:2181,some.ip3.zk.net:2181
+  namespace: example
+  downgrade:
+    threads-count: 8
+  performance:
+    memory-load: 95
+spring:
+  datasource:
+    hikari:
+      username: root
+      password: root
+      jdbc-url: jdbc:mysql://localhost:3306/example_db?useUnicode=true&useSSL=false&characterEncoding=utf8
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    url: jdbc:mysql://localhost:3306/example_db?useUnicode=true&useSSL=false&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  sql:
+    init:
+      schema-locations: classpath:sql/schema.sql
+      platform: mysql
+      mode: always
+  redis:
+    # you should use your redis addr.
+    host: some.ip1.redis.net
+    port: 6607
+    lettuce:
+      pool:
+        enabled: true
+    # type your redis password
+    password: some_password
+  jpa:
+    open-in-view: false
